@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mrs. Amira | English Language Specialist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .eng-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .stat-card { transition: transform 0.3s ease; }
+        .stat-card:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-900">
+
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="bg-blue-600 text-white p-2 rounded-lg"><i class="fas fa-book-open"></i></div>
+                <span class="text-xl font-black tracking-tighter text-blue-900 uppercase">Amira English Academy</span>
+            </div>
+            <a href="#booking" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition">Book Slot</a>
+        </div>
+    </nav>
+
+    <header class="bg-white py-16">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-6xl font-black leading-tight text-slate-900">
+                    Master <span class="text-blue-600">English</span> <br>with Mrs. Amira
+                </h1>
+                <p class="mt-6 text-xl text-slate-600 leading-relaxed">
+                    Specialized IELTS, IGCSE, and Conversational English programs designed for fluency and academic excellence. 
+                </p>
+                
+                <div class="mt-10 grid grid-cols-2 gap-4">
+                    <div class="stat-card bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                        <p class="text-4xl font-black text-blue-600">1,200+</p>
+                        <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mt-1">Sessions Held</p>
+                    </div>
+                    <div class="stat-card bg-indigo-50 p-6 rounded-2xl border border-indigo-100">
+                        <p class="text-4xl font-black text-indigo-600">150+</p>
+                        <p class="text-sm font-bold text-slate-500 uppercase tracking-widest mt-1">Active Students</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600" 
+                     class="rounded-3xl shadow-2xl grayscale hover:grayscale-0 transition duration-500 border-8 border-white">
+                <div class="absolute -top-6 -right-6 bg-yellow-400 p-4 rounded-2xl shadow-xl font-bold rotate-12">
+                    CELTA Certified 🎓
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-8 items-end justify-between mb-12">
+            <div>
+                <h2 class="text-3xl font-bold">English Learning Tracks</h2>
+                <p class="text-slate-500 mt-2">Comprehensive curriculum tailored to your level.</p>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-4 gap-4">
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition cursor-default">
+                <h3 class="font-black text-blue-600 text-lg mb-2">IELTS Prep</h3>
+                <p class="text-sm text-slate-500">Intensive training for Academic and General modules.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition cursor-default">
+                <h3 class="font-black text-blue-600 text-lg mb-2">IGCSE ESL</h3>
+                <p class="text-sm text-slate-500">Perfecting writing, listening, and speaking skills.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition cursor-default">
+                <h3 class="font-black text-blue-600 text-lg mb-2">Public Speaking</h3>
+                <p class="text-sm text-slate-500">Confidence building for presentations and interviews.</p>
+            </div>
+            <div class="bg-white p-6 rounded-2xl border border-slate-200 hover:border-blue-500 transition cursor-default">
+                <h3 class="font-black text-blue-600 text-lg mb-2">Business English</h3>
+                <p class="text-sm text-slate-500">Professional communication for the corporate world.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="bg-slate-900 py-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-white text-4xl font-bold">Reserve a Trial Session</h2>
+                <p class="text-slate-400 mt-4">Real-time availability for private 1-on-1 English coaching.</p>
+            </div>
+            
+            <div class="grid gap-4" id="slot-list">
+                </div>
+
+            <div class="mt-8 p-4 bg-white/5 rounded-xl border border-white/10 text-center">
+                <p class="text-slate-400 text-sm">
+                    <i class="fas fa-info-circle mr-2"></i> 
+                    Slots update every time Mrs. Amira confirms a booking in her Google Sheet.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-black text-center mb-16">What My Students Say</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+                <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="text-lg text-slate-700 italic mb-8">"Mrs. Amira's focus on English phonetics completely changed my speaking confidence. I passed my IELTS with a 7.5 band!"</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-bold text-blue-600">OM</div>
+                    <div>
+                        <p class="font-bold">Omar Mansour</p>
+                        <p class="text-xs text-slate-400">IELTS Candidate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+                <div class="flex text-yellow-400 mb-4"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p class="text-lg text-slate-700 italic mb-8">"I used to struggle with essay writing in IGCSE. Mrs. Amira taught me the 'Structure & Logic' method which made it so simple."</p>
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center font-bold text-pink-600">LR</div>
+                    <div>
+                        <p class="font-bold">Lina Raafat</p>
+                        <p class="text-xs text-slate-400">Grade 12 Student</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const slots = [
+            { id: "e1", day: "Monday, Feb 16", time: "5:00 PM", type: "IELTS Prep" },
+            { id: "e2", day: "Monday, Feb 16", time: "7:00 PM", type: "Conversational" },
+            { id: "e3", day: "Wednesday, Feb 18", time: "4:00 PM", type: "General English" },
+            { id: "e4", day: "Thursday, Feb 19", time: "6:30 PM", type: "Business English" }
+        ];
+
+        const list = document.getElementById('slot-list');
+        list.innerHTML = slots.map(s => `
+            <div class="bg-white p-6 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4 hover:scale-[1.02] transition shadow-xl">
+                <div class="flex items-center gap-6">
+                    <div class="bg-blue-50 text-blue-600 p-4 rounded-xl font-black text-center min-w-[100px]">
+                        <p class="text-xs uppercase">Time</p>
+                        <p class="text-lg">${s.time}</p>
+                    </div>
+                    <div>
+                        <p class="text-slate-400 text-sm font-bold uppercase tracking-widest">${s.day}</p>
+                        <h4 class="text-xl font-black text-slate-800">${s.type}</h4>
+                    </div>
+                </div>
+                <button onclick="alert('DEMO: Student picks ${s.type} slot. Google Form opens next!')" 
+                        class="bg-blue-600 text-white w-full md:w-auto px-10 py-4 rounded-xl font-black hover:bg-blue-700 transition shadow-lg">
+                    Book Now
+                </button>
+            </div>
+        `).join('');
+    </script>
+</body>
+</html>
