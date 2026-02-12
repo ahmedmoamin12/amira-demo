@@ -10,11 +10,10 @@
     
     <style>
         :root {
-            --primary-blue: #0f172a; /* أزرق داكن رمضاني */
-            --gold: #d4af37;        /* ذهبي ملكي */
-            --soft-purple: #3b2d60; /* بنفسجي خفيف */
+            --primary-blue: #0f172a; 
+            --gold: #d4af37;        
+            --soft-purple: #3b2d60; 
             --text-light: #f8fafc;
-            --accent-gold: #ffcc00;
         }
 
         * {
@@ -31,21 +30,28 @@
             overflow-x: hidden;
         }
 
-        /* خلفية رمضانية هادئة */
+        /* زينة رمضانية وفوانيس */
+        .lantern-right, .lantern-left {
+            position: absolute;
+            top: 20px;
+            width: 80px;
+            z-index: 10;
+            filter: drop-shadow(0 0 10px var(--gold));
+        }
+        .lantern-right { right: 20px; }
+        .lantern-left { left: 20px; }
+
+        /* الخلفية */
         .ramadan-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
             z-index: -1;
         }
 
         .stars {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background: url('https://www.transparenttextures.com/patterns/stardust.png');
             opacity: 0.3;
         }
@@ -56,160 +62,95 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 80px 20px;
-            background: url('https://images.unsplash.com/photo-1548013146-72479768bbaa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            background-blend-mode: overlay;
-            background-color: rgba(15, 23, 42, 0.85);
+            padding: 100px 20px;
+            position: relative;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), 
+                        url('https://images.unsplash.com/photo-1576487190100-8809930f7b17?auto=format&fit=crop&q=80&w=1600');
+            background-size: cover;
+            background-position: center;
             text-align: center;
         }
 
-        .hero-content {
-            max-width: 800px;
-        }
-
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
-            border: 4px solid var(--gold);
+            border: 5px solid var(--gold);
             margin-bottom: 20px;
             object-fit: cover;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
         }
 
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
+        .hero h1 { font-size: 3.2rem; color: var(--gold); margin-bottom: 10px; }
+        .hero p { font-size: 1.3rem; margin-bottom: 30px; color: #cbd5e1; }
 
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #cbd5e1;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
         .btn {
-            padding: 12px 30px;
+            padding: 14px 35px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             transition: 0.3s;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
         .btn-fb { background-color: #1877f2; color: white; }
         .btn-call { background-color: var(--gold); color: var(--primary-blue); }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.4); }
 
-        .btn:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-
-        /* About Section */
-        .section { padding: 80px 20px; max-width: 1100px; margin: 0 auto; }
+        /* Sections */
+        .section { padding: 100px 20px; max-width: 1100px; margin: 0 auto; }
         .section-title {
             text-align: center;
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: var(--gold);
-            margin-bottom: 50px;
-            position: relative;
-        }
-        .section-title::after {
-            content: '🌙';
-            display: block;
-            font-size: 1.5rem;
-            margin-top: 10px;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
+            margin-bottom: 60px;
         }
 
         .about-card {
-            background: rgba(59, 45, 96, 0.3);
-            padding: 30px;
-            border-radius: 20px;
-            border-bottom: 3px solid var(--gold);
+            background: rgba(59, 45, 96, 0.25);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(5px);
+            text-align: center;
             transition: 0.3s;
         }
+        .about-card:hover { border-color: var(--gold); transform: translateY(-10px); }
 
-        .about-card:hover { background: rgba(59, 45, 96, 0.5); }
-
-        /* Ramadan Table */
+        /* Schedule Table */
         .table-container {
             overflow-x: auto;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(15, 23, 42, 0.6);
             border-radius: 20px;
-            padding: 20px;
+            border: 1px solid var(--gold);
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            color: var(--text-light);
-        }
-
-        th, td {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
-
-        th { color: var(--gold); font-size: 1.2rem; }
-        
-        tr:hover { background: rgba(212, 175, 55, 0.1); }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 25px; text-align: center; border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+        th { background: var(--gold); color: var(--primary-blue); font-weight: 900; }
+        tr:hover { background: rgba(212, 175, 55, 0.05); }
 
         /* Testimonials */
-        .testimonials {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .test-card {
-            background: white;
-            color: var(--primary-blue);
-            padding: 30px;
-            border-radius: 15px;
-            position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            background: white; color: #1e293b; padding: 30px; border-radius: 20px; position: relative;
         }
-
-        .test-card::before {
-            content: "\f10e";
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-            position: absolute;
-            top: 10px;
-            left: 20px;
-            font-size: 2rem;
-            color: #eee;
-        }
+        .test-card i { color: var(--gold); font-size: 2rem; margin-bottom: 15px; }
 
         /* Footer */
         footer {
-            background: #080c14;
-            padding: 50px 20px;
+            background: #020617;
+            padding: 60px 20px;
             text-align: center;
-            border-top: 2px solid var(--gold);
+            border-top: 3px solid var(--gold);
         }
+        .social-links a { color: var(--gold); font-size: 2rem; margin: 0 15px; transition: 0.3s; }
+        .social-links a:hover { color: white; }
 
-        .footer-info p { margin-bottom: 10px; color: #94a3b8; }
-
-        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            th, td { padding: 10px; font-size: 0.9rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .lantern-right, .lantern-left { width: 50px; }
         }
     </style>
 </head>
@@ -217,54 +158,51 @@
 
     <div class="ramadan-bg"><div class="stars"></div></div>
 
+    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064762.png" class="lantern-right animate__animated animate__pulse animate__infinite" alt="فانوس">
+    <img src="https://cdn-icons-png.flaticon.com/512/3064/3064762.png" class="lantern-left animate__animated animate__pulse animate__infinite" alt="فانوس">
+
     <section class="hero animate__animated animate__fadeIn">
         <div class="hero-content">
-            <img src="https://ui-avatars.com/api/?name=Ahmed+Amin&background=d4af37&color=0f172a&size=200" alt="أحمد أمين" class="profile-img">
+            <img src="https://i.ibb.co/m5V4n7N/teacher-placeholder.png" alt="أحمد أمين" class="profile-img">
             <h1>أحمد أمين</h1>
-            <p>مدرس كيمياء | خبير بخبرة 5 سنوات في تبسيط العلوم</p>
-            <p style="max-width: 600px; margin: 0 auto 30px;">
-                "الكيمياء ليست مجرد معادلات، بل هي لغة الكون. نأخذك في رحلة ممتعة من بني سويف إلى آفاق العلم الواسعة لنصنع منك كيميائياً متميزاً."
+            <p>خبير الكيمياء بمحافظة بني سويف | خبرة 5 سنوات</p>
+            <p style="max-width: 700px; margin: 0 auto 30px; font-weight: 300;">
+                "نهدف إلى تبسيط الكيمياء وجعلها مادة ممتعة، من خلال المتابعة المستمرة وأحدث طرق التدريس التفاعلية."
             </p>
             <div class="btn-group">
-                <a href="https://facebook.com/example" target="_blank" class="btn btn-fb">
-                    <i class="fab fa-facebook"></i> تابعنا على فيسبوك
+                <a href="https://www.facebook.com/thementorahmed" target="_blank" class="btn btn-fb">
+                    <i class="fab fa-facebook"></i> الصفحة الرسمية
                 </a>
-                <a href="tel:01000000000" class="btn btn-call">
-                    <i class="fas fa-phone-alt"></i> اتصل الآن: 01000000000
+                <a href="tel:01288024972" class="btn btn-call">
+                    <i class="fas fa-phone-alt"></i> 01288024972
                 </a>
             </div>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="section-title">لماذا الكيمياء مع الأستاذ أحمد؟</h2>
-        <div class="about-grid">
-            <div class="about-card animate__animated animate__zoomIn">
-                <i class="fas fa-flask-vial fa-3x" style="color: var(--gold); margin-bottom: 20px;"></i>
-                <h3>تبسيط المفاهيم</h3>
-                <p>شرح سلس يحول أعقد المعادلات إلى أفكار سهلة الاستيعاب.</p>
-            </div>
-            <div class="about-card animate__animated animate__zoomIn">
-                <i class="fas fa-vial fa-3x" style="color: var(--gold); margin-bottom: 20px;"></i>
-                <h3>تجارب عملية</h3>
-                <p>ربط المادة النظرية بأمثلة من واقع حياتنا اليومية.</p>
-            </div>
-            <div class="about-card animate__animated animate__zoomIn">
-                <i class="fas fa-clipboard-check fa-3x" style="color: var(--gold); margin-bottom: 20px;"></i>
-                <h3>متابعة دورية</h3>
-                <p>اختبارات مستمرة لتقييم المستوى والاهتمام بكل طالب على حدة.</p>
-            </div>
+        <h2 class="section-title">منهجية التعليم 🧪</h2>
+        <div class="about-card animate__animated animate__fadeInUp">
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">
+                نقدم تجربة تعليمية فريدة تعتمد على:
+            </p>
+            <ul style="list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <li><i class="fas fa-check-circle color-gold"></i> شرح تفاعلي بأمثلة عملية</li>
+                <li><i class="fas fa-check-circle"></i> اختبارات دورية أسبوعية</li>
+                <li><i class="fas fa-check-circle"></i> تبسيط أعقد المفاهيم الكيميائية</li>
+                <li><i class="fas fa-check-circle"></i> متابعة فردية مع كل طالب</li>
+            </ul>
         </div>
     </section>
 
     <section class="section">
-        <h2 class="section-title">جدول مواعيد شهر رمضان المبارك 🌙</h2>
+        <h2 class="section-title">مواعيد دروس شهر رمضان 🌙</h2>
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
                         <th>المرحلة الدراسية</th>
-                        <th>الأيام</th>
+                        <th>أيام الحصص</th>
                         <th>التوقيت</th>
                     </tr>
                 </thead>
@@ -290,50 +228,47 @@
     </section>
 
     <section class="section">
-        <h2 class="section-title">آراء طلابنا</h2>
-        <div class="testimonials">
+        <h2 class="section-title">آراء الطلاب ⭐</h2>
+        <div class="test-grid">
             <div class="test-card">
-                <p>"أفضل مدرس كيمياء، الشرح بطريقة سهلة جداً ولم أعد أواجه صعوبة في المسائل."</p>
-                <strong style="display:block; margin-top:15px; color: var(--gold);">- محمد علي</strong>
+                <i class="fas fa-quote-right"></i>
+                <p>"أفضل مدرس كيمياء شرح بطريقة سهلة جدًا، الكيمياء أصبحت مادتي المفضلة."</p>
+                <h4 style="margin-top: 15px;">- أحمد خالد</h4>
             </div>
             <div class="test-card">
-                <p>"الاختبارات الدورية ساعدتني أطور مستواي جداً وأعرف نقاط ضعفي وأعالجها."</p>
-                <strong style="display:block; margin-top:15px; color: var(--gold);">- سارة محمود</strong>
+                <i class="fas fa-quote-right"></i>
+                <p>"الاختبارات الدورية ساعدتني أطور مستواي وأتعود على نظام الامتحانات الجديد."</p>
+                <h4 style="margin-top: 15px;">- منة الله محمد</h4>
             </div>
             <div class="test-card">
-                <p>"شرح مبسط وتفاعل رائع داخل الحصة، مستر أحمد بيحببنا في الكيمياء فعلاً."</p>
-                <strong style="display:block; margin-top:15px; color: var(--gold);">- يوسف كريم</strong>
+                <i class="fas fa-quote-right"></i>
+                <p>"شرح مبسط وتفاعل رائع داخل الحصة، شكراً مستر أحمد على مجهودك."</p>
+                <h4 style="margin-top: 15px;">- محمود إبراهيم</h4>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-info">
-            <h2 style="color: var(--gold); margin-bottom: 20px;">أحمد أمين - خبير الكيمياء</h2>
-            <p><i class="fas fa-map-marker-alt"></i> بني سويف، جمهورية مصر العربية</p>
-            <p><i class="fas fa-phone"></i> 01000000000</p>
-            <div style="margin: 20px 0; font-size: 1.5rem;">
-                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-facebook"></i></a>
-                <a href="#" style="color: white; margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <p>جميع الحقوق محفوظة © 2026 | رمضان كريم 🌙</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/thementorahmed"><i class="fab fa-facebook"></i></a>
+            <a href="https://wa.me/201288024972"><i class="fab fa-whatsapp"></i></a>
         </div>
+        <p style="margin-top: 20px; font-weight: 600;">الأستاذ أحمد أمين - خبير الكيمياء</p>
+        <p>بني سويف | 01288024972</p>
+        <p style="opacity: 0.6; margin-top: 10px;">جميع الحقوق محفوظة © 2026</p>
     </footer>
 
     <script>
-        // تأثير بسيط عند التمرير (Scroll Animation)
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(sec => {
-                const top = window.scrollY;
-                const offset = sec.offsetTop - 400;
-                if (top >= offset) {
-                    sec.classList.add('animate__animated', 'animate__fadeInUp');
+        // تأثير ظهور العناصر عند التمرير
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__fadeInUp');
                 }
             });
         });
 
-        console.log("تم تحميل موقع الأستاذ أحمد أمين بنجاح! رمضان كريم.");
+        document.querySelectorAll('.section').forEach((el) => observer.observe(el));
     </script>
 </body>
 </html>
